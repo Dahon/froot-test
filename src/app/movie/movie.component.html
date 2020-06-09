@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row" *ngIf="this.movie">
+    <div class="col-lg-9 p-3">
+      <h1 class="my-4">{{this.movie.name}}</h1>
+      <div class="card mt-4 movie-detail flex-row">
+        <div class="col-md-3">
+          <img class="cover-img" src="assets/img/movie-covers/{{this.movie.img}}" alt="">
+        </div>
+        <div class="col-md-9 pt-3">
+          <p>Length: {{this.movie.length}} - Rate: {{this.movie.rate}}</p>
+          <p class="description-text float-right">{{this.movie.description}}</p>
+          <div class="genres">
+            <span class="genre mr-2" *ngFor="let genre of this.movie.genres">{{genre}}</span>
+          </div>
+          <a [routerLink]="['/']" class="back-button btn btn-primary mt-3">
+            << Back to main</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="movie-list">
+        <h2 class="my-3 w-100">Похожее по жанрам</h2>
+        <div class="movie-block col-md-2 col-sm-6 col-5" *ngFor="let item of this.similarMovies">
+          <a href="/detail/{{item.id}}">
+            <img class="img-fluid img-thumbnail" src="assets/img/movie-covers/{{item.img}}" alt="">
+            <p class="movie-name">{{item.name}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

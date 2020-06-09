@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+      <div class="movie-filter col-md-10 m-3">
+        <div class="input-group search-field col-md-5">
+          <input type="text" [(ngModel)]="searchText" class="form-control input-lg" placeholder="Название фильма" />
+        </div>
+        <div class="input-group search-field genre-field col-md-5">
+          <select class='form-control' [(ngModel)]="categoryText">
+            <option value="" selected>Выберите тип</option>
+            <option *ngFor="let genre of genres" [value]='genre'>{{genre}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="movie-block col-md-2 col-sm-6 col-5" *ngFor="let movie of movies | filter : searchText: categoryText ">
+        <a [routerLink]="['/detail', movie.id]">
+          <img class="img-fluid img-thumbnail" src="assets/img/movie-covers/{{movie.img}}" alt="">
+          <p class="movie-name">{{movie.name}}</p>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+
